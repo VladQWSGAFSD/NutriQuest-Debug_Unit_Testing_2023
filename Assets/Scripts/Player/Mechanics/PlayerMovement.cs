@@ -16,6 +16,12 @@ public class PlayerMovement : MonoBehaviour, IMove
 
     private Vector2 _movement;
 
+    public float Speed
+    {
+        get => _speed;
+        set => _speed = value;
+    }
+
     /// <summary>
     /// Moves the player with the physics engine based on the given movement.
     /// The x component moves the player on the x axis, the y component moves the player on the z axis.
@@ -39,5 +45,9 @@ public class PlayerMovement : MonoBehaviour, IMove
         {
             _rb.rotation = Quaternion.LookRotation(new Vector3(_movement.x, 0f, _movement.y));
         }
+    }
+    public void UpdateMovement()
+    {
+        FixedUpdate();
     }
 }

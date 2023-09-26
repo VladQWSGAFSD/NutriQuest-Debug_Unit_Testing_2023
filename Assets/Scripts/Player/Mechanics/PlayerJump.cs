@@ -17,6 +17,20 @@ public class PlayerJump : MonoBehaviour, IJump
     // Properties for the interfaces
     private IGrounded _grounded => _groundedSerialized.Value;
 
+    //public void SetRigidBody(Rigidbody rb)
+    //{
+    //    _rb = rb;
+    //}
+
+    public void SetGrounded(IGrounded grounded)
+    {
+        if (_groundedSerialized == null)
+        {
+            _groundedSerialized = new SerializableInterface<IGrounded>();
+        }
+        _groundedSerialized.Value = grounded;
+    }
+
     /// <summary>
     /// Makes the player jump with the physics engine based on the jump force.
     /// </summary>
