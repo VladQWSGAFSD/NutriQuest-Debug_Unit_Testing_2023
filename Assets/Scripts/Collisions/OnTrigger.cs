@@ -8,13 +8,13 @@ using UnityEngine.Events;
 public class OnTrigger : MonoBehaviour
 {
     [Header("Events")]
-    [SerializeField] private UnityEvent<Collider> _onTriggerEnter;
+    [SerializeField] private UnityEvent<Collider> _onTriggerEnter = new UnityEvent<Collider>();
     [SerializeField] private UnityEvent<Collider> _onTriggerExit;
 
     [Header("Parameters")]
 
-    [SerializeField] private bool _tagFiltering = true;
-    [SerializeField, ShowIf(nameof(_tagFiltering)), Tag] private string _tag;
+    [SerializeField] public bool _tagFiltering = true;
+    [SerializeField, ShowIf(nameof(_tagFiltering)), Tag] public string _tag;
     
     [Space(2)]
     [SerializeField] private bool _layerFiltering = true;
