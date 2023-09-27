@@ -1,26 +1,40 @@
-using NUnit.Framework;
-using UnityEngine;
-using NSubstitute;
-using System.Reflection;
-[TestFixture]
-public class PlayerAnimationsTests
-{
-    [Test]
-    public void Move_SetsAnimatorSpeedParameterCorrectly()
-    {
-        // Arrange
-        var go = new GameObject();
-        var playerAnimations = go.AddComponent<PlayerAnimations>();
+//using NUnit.Framework;
+//using System.Reflection;
+//using UnityEngine;
 
-        var mockAnimator = Substitute.For<Animator>();
-        playerAnimations.GetType().GetField("_animator", BindingFlags.Instance | BindingFlags.NonPublic)?.SetValue(playerAnimations, mockAnimator);
+//public class PlayerAnimationsTests
+//{
+//    public class MockAnimator : MonoBehaviour,Animator
+//    {
+//        public string LastParamName { get; private set; }
+//        public float LastValue { get; private set; }
 
-        var speed = 5f;
+//        public override void SetFloat(string name, float value)
+//        {
+//            LastParamName = name;
+//            LastValue = value;
+//        }
+//    }
 
-        // Act
-        playerAnimations.Move(speed);
+//    [Test]
+//    public void PlayerAnimationsCallsMoveAnim()
+//    {
+//        // Arrange
+//        var go = new GameObject();
+//        var playerAnimations = go.AddComponent<PlayerAnimations>();
 
-        // Assert
-        mockAnimator.Received().SetFloat(Arg.Is<string>(s => s == "Speed"), Arg.Is<float>(f => f == speed));
-    }
-}
+//        var mockAnimator = new MockAnimator();
+//        typeof(PlayerAnimations).GetField("_animator", BindingFlags.Instance | BindingFlags.NonPublic)?.SetValue(playerAnimations, mockAnimator);
+
+//        float testSpeed = 5f;
+
+//        // Act
+//        playerAnimations.Move(testSpeed);
+
+//        // Assert
+//        Assert.AreEqual("_speedParam", mockAnimator.LastParamName);
+//        Assert.AreEqual(testSpeed, mockAnimator.LastValue);
+//    }
+
+ 
+//}

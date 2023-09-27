@@ -44,7 +44,6 @@ public class PlayerJump : MonoBehaviour, IJump
             }
             else
             {
-
                 Debug.Log("Jump called. player is NOT grounded.");
                 return;
             }

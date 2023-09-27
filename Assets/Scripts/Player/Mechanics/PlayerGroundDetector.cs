@@ -40,6 +40,7 @@ public class PlayerGroundDetector : MonoBehaviour, IGrounded
         if (Grounded && !_lastGroundedStatus)
         {
             OnGrounded?.Invoke();
+            //_animations.SetGrounded();
         }
     }
 
