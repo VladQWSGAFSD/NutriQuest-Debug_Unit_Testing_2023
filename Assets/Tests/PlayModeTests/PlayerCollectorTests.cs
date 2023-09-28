@@ -29,12 +29,9 @@ public class PlayerCollectorTests
 
         var foodCollectibleGameObject = new GameObject();
         foodCollectibleGameObject.AddComponent<BoxCollider>();
-        //mock icollect
+        //mock icollect?
         var foodCollectible = foodCollectibleGameObject.AddComponent<DummyCollectible>();
-
-        // Set up a substitute
-
-        // Position objects 
+ 
         foodCollectibleGameObject.transform.position = playerCollectorGameObject.transform.position + playerCollectorGameObject.transform.forward * 1f;
 
         // Act
