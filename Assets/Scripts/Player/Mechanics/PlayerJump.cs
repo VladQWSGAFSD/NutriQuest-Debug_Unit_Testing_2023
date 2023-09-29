@@ -17,10 +17,10 @@ public class PlayerJump : MonoBehaviour, IJump
     // Properties for the interfaces
     private IGrounded _grounded => _groundedSerialized.Value;
 
-    //public void SetRigidBody(Rigidbody rb)
-    //{
-    //    _rb = rb;
-    //}
+    public void Initialize(Rigidbody rb)
+    {
+        _rb = rb;
+    }
 
     public void SetGrounded(IGrounded grounded)
     {
@@ -36,16 +36,13 @@ public class PlayerJump : MonoBehaviour, IJump
     /// </summary>
     public void Jump()
     {
-        if (_grounded.Grounded)
-            if (_grounded.Grounded)
-            {
-                Debug.Log("Jump. player is grounded.");
-                _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
-            }
-            else
-            {
-                Debug.Log("Jump called. player is NOT grounded.");
-                return;
-            }
+        if (!_grounded.Grounded)
+        {
+            Debug.Log("Jump called. player is NOT grounded.");
+            return;
+        }
+        Debug.Log("Jump. player is grounded.");
+        _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
     }
+
 }
