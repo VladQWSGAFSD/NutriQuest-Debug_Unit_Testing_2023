@@ -12,6 +12,9 @@ public class FoodScoreEffect : MonoBehaviour, IExecute
     [Header("Parameters")]
     [SerializeField] private int _scoreValue;
 
+    [Header("UI")]
+    [SerializeField] private FillManager _fillManager;
+
     // Properties for the interfaces
     private IAdd<int> _scoreAdd => _scoreAddSerialized.Value;
 
@@ -22,5 +25,7 @@ public class FoodScoreEffect : MonoBehaviour, IExecute
     {
         // Add score
         _scoreAdd.Add(_scoreValue);
+        //fill amount adjust
+        _fillManager.AdjustFillAmount(_scoreValue);
     }
 }
